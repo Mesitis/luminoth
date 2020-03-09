@@ -2,7 +2,7 @@
 
 ---
 
-**(Jan 2020) Luminoth is not maintained anymore**. We recommend switching to Facebook's [Detectron2](https://github.com/facebookresearch/detectron2), which implements more modern algorithms supporting additional use cases.
+**(Jan 2020) Luminoth mainline is not maintained anymore**. They recommend switching to Facebook's [Detectron2](https://github.com/facebookresearch/detectron2), which implements more modern algorithms supporting additional use cases. This fork continues on with various bugfixes.
 
 ---
 
@@ -29,28 +29,12 @@ To use Luminoth, [TensorFlow](https://www.tensorflow.org/install/) must be insta
 
 ## Installing Luminoth
 
-Just install from PyPI:
-
-```bash
-pip install luminoth
-```
-
-Optionally, Luminoth can also install TensorFlow for you if you install it with `pip install luminoth[tf]` or `pip install luminoth[tf-gpu]`, depending on the version of TensorFlow you wish to use.
-
-### Google Cloud
-
-If you wish to train using **Google Cloud ML Engine**, the optional dependencies must be installed:
-
-```bash
-pip install luminoth[gcloud]
-```
-
-## Installing from source
+### Installing from source
 
 First, clone the repo on your machine and then install with `pip`:
 
 ```bash
-git clone https://github.com/tryolabs/luminoth.git
+git clone https://github.com/dshea89/luminoth.git
 cd luminoth
 pip install -e .
 ```
