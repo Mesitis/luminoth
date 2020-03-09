@@ -524,11 +524,11 @@ def calculate_metrics(output_per_batch, num_classes):
         http://host.robots.ox.ac.uk/pascal/VOC/pubs/everingham10.pdf
     """
     iou_thresholds = np.linspace(
-        0.50, 0.95, np.round((0.95 - 0.50) / 0.05) + 1
+        0.50, 0.95, int(np.round((0.95 - 0.50) / 0.05) + 1)
     )
     # 101 recall levels, same as COCO evaluation.
     rec_thresholds = np.linspace(
-        0.00, 1.00, np.round((1.00 - 0.00) / 0.01) + 1
+        0.00, 1.00, int(np.round((1.00 - 0.00) / 0.01) + 1)
     )
 
     # List; first by class, then by example. Each entry is a tuple of ndarrays
