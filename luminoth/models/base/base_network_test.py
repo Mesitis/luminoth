@@ -1,7 +1,7 @@
 import gc
 import easydict
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.models.base.base_network import (
     BaseNetwork, _R_MEAN, _G_MEAN, _B_MEAN, VALID_ARCHITECTURES

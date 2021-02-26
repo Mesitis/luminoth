@@ -1,8 +1,8 @@
 import sonnet as snt
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from sonnet.python.modules.conv import Conv2D
-from tensorflow.contrib.layers.python.layers import utils
+import tf_slim as slim
 
 from luminoth.models.base import BaseNetwork
 
@@ -129,7 +129,7 @@ class SSDFeatureExtractor(BaseNetwork):
             self.pretrained_weights_scope = scope + '/vgg_16'
 
         # It's actually an ordered dict
-        return utils.convert_collection_to_dict('FEATURE_MAPS')
+        return slim.layers.utils.convert_collection_to_dict('FEATURE_MAPS')
 
     def get_trainable_vars(self):
         """

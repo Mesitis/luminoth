@@ -1,5 +1,5 @@
 import sonnet as snt
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.models.fasterrcnn.rcnn_proposal import RCNNProposal
 from luminoth.models.fasterrcnn.rcnn_target import RCNNTarget

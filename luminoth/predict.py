@@ -5,7 +5,7 @@ import os
 import skvideo.io
 import sys
 import time
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from PIL import Image
 from luminoth.tools.checkpoint import get_checkpoint_config

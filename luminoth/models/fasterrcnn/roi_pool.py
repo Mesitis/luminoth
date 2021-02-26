@@ -1,5 +1,5 @@
 import sonnet as snt
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 # Types of RoI "pooling"
 CROP = 'crop'

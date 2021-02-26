@@ -1,6 +1,6 @@
 import sonnet as snt
 import tempfile
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from easydict import EasyDict
 from luminoth.train import run

@@ -1,5 +1,5 @@
 import sonnet as snt
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.utils.bbox_transform_tf import decode, clip_boxes, change_order
 

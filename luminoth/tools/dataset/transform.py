@@ -1,5 +1,5 @@
 import click
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.datasets.exceptions import InvalidDataDirectory
 from luminoth.utils.config import parse_override

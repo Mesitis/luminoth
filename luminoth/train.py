@@ -2,7 +2,7 @@ import click
 import json
 import os
 import sys
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import time
 
 from tensorflow.python import debug as tf_debug

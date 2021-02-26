@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import time
 
 from datetime import datetime

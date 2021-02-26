@@ -6,7 +6,7 @@ import six
 import requests
 import tarfile
 import tempfile
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import uuid
 
 from datetime import datetime

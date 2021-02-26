@@ -1,10 +1,10 @@
 import functools
 
 import sonnet as snt
-import tensorflow as tf
-import tensorflow.contrib.slim as slim
+import tensorflow.compat.v1 as tf
+import tf_slim as slim
 
-from tensorflow.contrib.slim.nets import resnet_v2, resnet_v1, vgg
+from tf_slim.nets import resnet_v2, resnet_v1, vgg
 
 from luminoth.models.base import truncated_vgg
 from luminoth.utils.checkpoint_downloader import get_checkpoint_file

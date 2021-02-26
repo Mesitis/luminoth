@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from tensorflow.python.training.summary_io import SummaryWriterCache
 from luminoth.utils.image_vis import image_vis_summaries

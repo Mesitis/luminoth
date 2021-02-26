@@ -47,11 +47,11 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from tensorflow.contrib import layers
-from tensorflow.contrib.framework.python.ops import arg_scope
-from tensorflow.contrib.layers.python.layers import layers as layers_lib
-from tensorflow.contrib.layers.python.layers import regularizers
-from tensorflow.contrib.layers.python.layers import utils
+from tensorflow.compat.v1 import layers
+from tf_slim.ops.arg_scope import arg_scope
+from tf_slim import layers as layers_lib
+from tf_slim.layers import regularizers
+from tf_slim.layers import utils
 from tensorflow.python.ops import init_ops
 from tensorflow.python.ops import nn_ops
 from tensorflow.python.ops import variable_scope

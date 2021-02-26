@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 def adjust_bboxes(bboxes, old_height, old_width, new_height, new_width):

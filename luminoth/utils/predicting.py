@@ -1,7 +1,7 @@
 import json
 import numpy as np
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.models import get_model
 from luminoth.datasets import get_dataset

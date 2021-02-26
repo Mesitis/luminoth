@@ -3,7 +3,7 @@ import os
 import signal
 import six
 import sys
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import threading
 
 from six.moves import queue

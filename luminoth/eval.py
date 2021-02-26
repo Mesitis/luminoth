@@ -2,7 +2,7 @@ import click
 import json
 import numpy as np
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import time
 
 from luminoth.datasets import get_dataset

@@ -1,5 +1,5 @@
 import click
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 @click.command()

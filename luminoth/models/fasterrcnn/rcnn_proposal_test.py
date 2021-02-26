@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from easydict import EasyDict
 from luminoth.models.fasterrcnn.rcnn_proposal import RCNNProposal

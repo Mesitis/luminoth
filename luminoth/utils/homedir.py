@@ -1,6 +1,6 @@
 """Luminoth home (~/.luminoth) management utilities."""
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 DEFAULT_LUMINOTH_HOME = os.path.expanduser('~/.luminoth')

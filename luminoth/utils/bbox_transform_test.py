@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.utils.bbox_transform import (
     encode as encode_np, decode as decode_np, clip_boxes as clip_boxes_np

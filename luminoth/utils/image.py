@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.utils.bbox_transform_tf import clip_boxes
 

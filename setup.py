@@ -49,6 +49,7 @@ INSTALL_REQUIRES = [
     # https://github.com/makinacorpus/easydict/pull/14 is merged.
     'easydict>=1.7,<=1.8',
     'six>=1.11',
+    'tf-slim'
 ]
 TEST_REQUIRES = []
 

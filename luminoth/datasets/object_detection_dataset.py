@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.datasets.base_dataset import BaseDataset
 from luminoth.utils.image import (

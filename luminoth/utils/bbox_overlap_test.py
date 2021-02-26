@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.utils.bbox_overlap import bbox_overlap_tf, bbox_overlap
 

@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 def smooth_l1_loss(bbox_prediction, bbox_target, sigma=3.0):

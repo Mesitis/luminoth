@@ -3,7 +3,7 @@ import json
 import os
 import requests
 import tarfile
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.utils.homedir import get_luminoth_home
 

@@ -1,6 +1,6 @@
 import abc
 import six
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from collections import Counter
 

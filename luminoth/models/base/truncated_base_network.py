@@ -1,7 +1,7 @@
-import tensorflow as tf
-import tensorflow.contrib.slim as slim
+import tensorflow.compat.v1 as tf
+import tf_slim as slim
 
-from tensorflow.contrib.slim.nets import resnet_utils, resnet_v1
+from tf_slim.nets import resnet_utils, resnet_v1
 from luminoth.models.base import BaseNetwork
 
 

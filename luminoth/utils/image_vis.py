@@ -5,7 +5,7 @@ import logging
 import PIL.Image as Image
 import PIL.ImageDraw as ImageDraw
 import PIL.ImageFont as ImageFont
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from .bbox_overlap import bbox_overlap
 from .bbox_transform import decode
@@ -1437,7 +1437,7 @@ def draw_ssd_top_k_anchors_per_gt(pred_dict, image, top_k=5):
             top_k_anchors_idx = np.argpartition(
                 overlaps_per_gt_box, partition_edge
             )[partition_edge:]
-        
+
             # Get top_k anchors
             top_k_anchors = anchors[top_k_anchors_idx]
 

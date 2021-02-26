@@ -1,6 +1,6 @@
 import json
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from luminoth.tools.dataset.readers import InvalidDataDirectory
 from luminoth.tools.dataset.readers.object_detection import (

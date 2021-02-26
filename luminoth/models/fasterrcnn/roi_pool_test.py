@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from easydict import EasyDict
 from luminoth.models.fasterrcnn.roi_pool import ROIPoolingLayer
