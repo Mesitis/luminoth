@@ -23,6 +23,7 @@ class RCNNProposalTest(tf.test.TestCase):
 
         self._shared_model = RCNNProposal(self._num_classes, self._config)
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def _run_rcnn_proposal(self, model, proposals, bbox_pred, cls_prob,
                            image_shape=None):

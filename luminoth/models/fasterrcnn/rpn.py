@@ -4,6 +4,7 @@ RPN - Region Proposal Network
 
 import sonnet as snt
 import tensorflow.compat.v1 as tf
+import tf_slim
 
 from sonnet.python.modules.conv import Conv2D
 
@@ -51,7 +52,7 @@ class RPN(snt.AbstractModule):
         self._bbox_initializer = get_initializer(
             config.bbox_initializer, seed=seed
         )
-        self._regularizer = tf.contrib.layers.l2_regularizer(
+        self._regularizer = tf_slim.regularizers.l2_regularizer(
             scale=config.l2_regularization_scale
         )
 

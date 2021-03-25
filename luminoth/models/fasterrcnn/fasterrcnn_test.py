@@ -146,6 +146,7 @@ class FasterRCNNNetworkTest(tf.test.TestCase):
             [19, 30, 31, 33, 1],
         ])
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def _run_network(self):
         image = tf.placeholder(

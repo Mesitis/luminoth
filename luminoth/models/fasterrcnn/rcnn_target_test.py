@@ -31,6 +31,7 @@ class RCNNTargetTest(tf.test.TestCase):
             self._num_classes, self._config, seed=0
         )
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def _run_rcnn_target(self, model, gt_boxes, proposed_boxes):
         """Runs an instance of RCNNTarget

@@ -35,6 +35,7 @@ class ROIPoolingTest(tf.test.TestCase):
         #           -------------
         #           mat_c | mat_d
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def _run_roi_pooling(self, roi_proposals, pretrained, config):
         roi_proposals_tf = tf.placeholder(

@@ -37,6 +37,7 @@ class ImageTest(tf.test.TestCase):
             'min_width': 600,
         })
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def _gen_image(self, *shape):
         return np.random.rand(*shape)
@@ -100,14 +101,14 @@ class ImageTest(tf.test.TestCase):
 
     def _random_resize(self, image, config, bboxes=None):
         config = self._random_resize_config
-        with self.test_session() as sess:
+        with self.session() as sess:
             resize = random_resize(image, bboxes=bboxes, seed=0, **config)
             return_dict = sess.run(resize)
             ret_bboxes = return_dict.get('bboxes')
             return return_dict['image'], ret_bboxes
 
     def _random_distort(self, image, config, bboxes=None):
-        with self.test_session() as sess:
+        with self.session() as sess:
             distort = random_distortion(
                 image, bboxes=bboxes, seed=0, **config
             )

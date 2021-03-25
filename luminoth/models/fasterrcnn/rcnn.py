@@ -1,5 +1,6 @@
 import sonnet as snt
 import tensorflow.compat.v1 as tf
+import tf_slim
 
 from luminoth.models.fasterrcnn.rcnn_proposal import RCNNProposal
 from luminoth.models.fasterrcnn.rcnn_target import RCNNTarget
@@ -56,7 +57,7 @@ class RCNN(snt.AbstractModule):
         self._bbox_initializer = get_initializer(
             config.bbox_initializer, seed=seed
         )
-        self.regularizer = tf.contrib.layers.l2_regularizer(
+        self.regularizer = tf_slim.regularizers.l2_regularizer(
             scale=config.l2_regularization_scale)
 
         self._l1_sigma = config.l1_sigma
@@ -189,7 +190,7 @@ class RCNN(snt.AbstractModule):
 
         # We treat num proposals as batch number so that when flattening we
         # get a (num_proposals, flatten_pooled_feature_map_size) Tensor.
-        flatten_features = tf.contrib.layers.flatten(features)
+        flatten_features = tf.layers.flatten(features)
         net = tf.identity(flatten_features)
 
         if is_training:

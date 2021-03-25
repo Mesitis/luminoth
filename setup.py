@@ -37,7 +37,6 @@ CLASSIFIERS = [
 INSTALL_REQUIRES = [
     'Pillow',
     'lxml',
-    'numpy',
     'requests',
     'scikit-video',
     'Flask>=0.12',
@@ -49,7 +48,9 @@ INSTALL_REQUIRES = [
     # https://github.com/makinacorpus/easydict/pull/14 is merged.
     'easydict>=1.7,<=1.8',
     'six>=1.11',
-    'tf-slim'
+    'tensorflow',
+    'tf-slim',
+    'numpy==1.19.2',
 ]
 TEST_REQUIRES = []
 

@@ -11,6 +11,10 @@ class BBoxOverlapTest(tf.test.TestCase):
     We test both at the same time by getting both values and making sure they
     are both equal before doing any assertions.
     """
+    def setUp(self):
+        tf.disable_eager_execution()
+
+
     def tearDown(self):
         tf.reset_default_graph()
 

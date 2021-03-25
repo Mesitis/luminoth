@@ -11,6 +11,9 @@ from luminoth.utils.test.gt_boxes import generate_gt_boxes
 
 
 class BBoxTransformTest(tf.test.TestCase):
+    def setUp(self):
+        tf.disable_eager_execution()
+
     def tearDown(self):
         tf.reset_default_graph()
 

@@ -15,6 +15,7 @@ class BaseNetworkTest(tf.test.TestCase):
             'architecture': 'vgg_16',
         })
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def testDefaultImageSize(self):
         m = BaseNetwork(easydict.EasyDict({'architecture': 'vgg_16'}))

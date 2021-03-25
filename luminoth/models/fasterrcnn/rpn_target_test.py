@@ -21,6 +21,7 @@ class RPNTargetTest(tf.test.TestCase):
             'minibatch_size': 2
         })
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def _run_rpn_target(self, anchors, gt_boxes, config):
         gt_boxes_tf = tf.placeholder(tf.float32, shape=gt_boxes.shape)
