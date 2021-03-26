@@ -1,11 +1,11 @@
-import numpy as np
-import tensorflow.compat.v1 as tf
-
-from easydict import EasyDict
-from luminoth.models.fasterrcnn.rpn_proposal import RPNProposal
-from luminoth.utils.bbox_transform_tf import encode, clip_boxes
-
-
+# import numpy as np
+# import tensorflow.compat.v1 as tf
+#
+# from easydict import EasyDict
+# from luminoth.models.fasterrcnn.rpn_proposal import RPNProposal
+# from luminoth.utils.bbox_transform_tf import encode, clip_boxes
+#
+#
 # class RPNProposalTest(tf.test.TestCase):
 #
 #     def setUp(self):
@@ -112,7 +112,7 @@ from luminoth.utils.bbox_transform_tf import encode, clip_boxes
 #         results = self._run_rpn_proposal(
 #             all_anchors, rpn_cls_prob, self.config, gt_boxes=gt_boxes)
 #
-#         # Check we get exactly 3 'nms proposals' because 3 IoU lowers than 0.3.
+#         # Check we get exactly 3 'nms proposals' because 3 IoU lowers than .3
 #         # Also check that we get the corrects scores.
 #         self.assertEqual(
 #             results['proposals'].shape,
@@ -129,7 +129,7 @@ from luminoth.utils.bbox_transform_tf import encode, clip_boxes
 #         results = self._run_rpn_proposal(
 #             all_anchors, rpn_cls_prob, self.config, gt_boxes=gt_boxes)
 #
-#         # Check we get exactly 3 'nms proposals' because 3 IoU lowers than 0.3.
+#         # Check we get exactly 3 'nms proposals' because 3 IoU lowers than .3
 #         # Also check that we get the corrects scores.
 #         self.assertEqual(
 #             results['proposals'].shape,
@@ -146,7 +146,7 @@ from luminoth.utils.bbox_transform_tf import encode, clip_boxes
 #         results = self._run_rpn_proposal(
 #             all_anchors, rpn_cls_prob, self.config, gt_boxes=gt_boxes)
 #
-#         # Check we get exactly 3 'nms proposals' because 3 IoU lowers than 0.8.
+#         # Check we get exactly 3 'nms proposals' because 3 IoU lowers than .8
 #         # Also check that we get the corrects scores.
 #         self.assertEqual(
 #             results['proposals'].shape,
@@ -332,8 +332,9 @@ from luminoth.utils.bbox_transform_tf import encode, clip_boxes
 #         results = self._run_rpn_proposal(
 #             all_anchors, rpn_cls_prob, self.config, gt_boxes=gt_boxes)
 #
-#         # Check we get exactly 2 'proposals' and 2 'unsorted_proposals' because
-#         # we have 4 gt_boxes, but 2 with negative area (and nms_threshold = 1).
+#         # Check we get exactly 2 'proposals' and 2 'unsorted_proposals'
+#         # because we have 4 gt_boxes, but 2 with negative area
+#         # (and nms_threshold = 1).
 #         self.assertEqual(
 #             results['proposals'].shape,
 #             (2, 4)
@@ -345,11 +346,13 @@ from luminoth.utils.bbox_transform_tf import encode, clip_boxes
 #         )
 #
 #     def testNegativeAreaProposals(self):
+#         # invalid anchor will transform to an invalid proposal. we are
+#         # cheating here but it's almost the same.
 #         all_anchors = np.array([
 #             [11, 13, 12, 16],
-#             [10, 10, 9, 9],  # invalid anchor will transform to an invalid
-#             [11, 13, 12, 28],  # proposal. we are cheating here but it's almost
-#             [7, 13, 34, 30],  # the same.
+#             [10, 10, 9, 9],
+#             [11, 13, 12, 28],
+#             [7, 13, 34, 30],
 #         ])
 #         rpn_cls_prob = np.array([
 #             [0.3, 0.7],
@@ -397,11 +400,12 @@ from luminoth.utils.bbox_transform_tf import encode, clip_boxes
 #             [0.3, 0.7],
 #             [0.1, 0.9],
 #         ])
-#
-#         rpn_bbox_pred = np.array([  # This is set to zeros so when decode is
-#             [0, 0, 0, 0],           # applied in RPNProposal the anchors don't
-#             [0, 0, 0, 0],           # change, leaving us with unclipped
-#             [0, 0, 0, 0],           # proposals.
+#         # This is set to zeros so when decode is applied in RPNProposal
+#         # the anchors don't change, leaving us with unclipped proposals
+#         rpn_bbox_pred = np.array([
+#             [0, 0, 0, 0],
+#             [0, 0, 0, 0],
+#             [0, 0, 0, 0],
 #             [0, 0, 0, 0],
 #         ])
 #         config = EasyDict(self.config)
@@ -420,7 +424,7 @@ from luminoth.utils.bbox_transform_tf import encode, clip_boxes
 #                 im_size: self.im_size
 #             })
 #
-#         # Check we clip proposals right after filtering the invalid area ones.
+#         # Check we clip proposals right after filtering the invalid area ones
 #         self.assertAllEqual(
 #             results_before['unsorted_proposals'],
 #             clipped_proposals

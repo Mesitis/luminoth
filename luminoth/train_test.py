@@ -1,29 +1,29 @@
 import sonnet as snt
-import tempfile
 import tensorflow.compat.v1 as tf
 
-from easydict import EasyDict
-from luminoth.train import run
-from luminoth.models import get_model
-from luminoth.utils.config import (
-    get_model_config, load_config_files, get_base_config
-)
+# from easydict import EasyDict
+# from luminoth.train import run
+# from luminoth.models import get_model
+# from luminoth.utils.config import (
+#     get_model_config, load_config_files, get_base_config
+# )
 
 
 class MockFasterRCNN(snt.AbstractModule):
     """
     Mocks Faster RCNN Network
     """
-    def __init__(self, config, name='mockfasterrcnn'):
+
+    def __init__(self, config, name="mockfasterrcnn"):
         super(MockFasterRCNN, self).__init__(name=name)
         self._config = config
 
     def _build(self, image, gt_boxes=None, is_training=False):
-        w = tf.get_variable('w', initializer=[2.5, 3.0], trainable=True)
-        return {'w': w}
+        w = tf.get_variable("w", initializer=[2.5, 3.0], trainable=True)
+        return {"w": w}
 
     def loss(self, pred_dict, return_all=False):
-        return tf.reduce_sum(pred_dict['w'], 0)
+        return tf.reduce_sum(pred_dict["w"], 0)
 
     def get_trainable_vars(self):
         return snt.get_variables_in_module(self)
@@ -36,7 +36,8 @@ class MockFasterRCNN(snt.AbstractModule):
 
     @property
     def summary(self):
-        return tf.summary.scalar('dummy', 1, collections=['rcnn'])
+        return tf.summary.scalar("dummy", 1, collections=["rcnn"])
+
 
 #
 # class TrainTest(tf.test.TestCase):
@@ -158,5 +159,5 @@ class MockFasterRCNN(snt.AbstractModule):
 #         self.assertArrayNear(w_numpy, [2.5, 3.0], err=0.01)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     tf.test.main()
