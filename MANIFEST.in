@@ -1,5 +1,6 @@
-include *.md *.txt tox.ini LICENSE *.yml *.yaml pyproject.toml
+include *.md *.txt tox.ini LICENSE *.yml *.yaml pyproject.toml .flake8
 graft luminoth
+recursive-include sonnet *.txt
 recursive-include docs *
 recursive-include examples *
 
