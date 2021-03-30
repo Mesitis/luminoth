@@ -26,6 +26,7 @@ class ObjectDetectionDatasetTest(tf.test.TestCase):
             }
         })
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def _run_augment(self, augment_config, image, bboxes):
         self.base_config['dataset']['data_augmentation'] = augment_config

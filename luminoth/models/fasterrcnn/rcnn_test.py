@@ -14,6 +14,7 @@ class MockBaseNetwork():
 class RCNNTest(tf.test.TestCase):
     def setUp(self):
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
         self._num_classes = 5
         self._num_proposals = 256

@@ -18,6 +18,7 @@ class TruncatedBaseNetworkTest(tf.test.TestCase):
             'output_stride': 16,
         })
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def testAllArchitectures(self):
         for architecture, endpoint in DEFAULT_ENDPOINTS.items():

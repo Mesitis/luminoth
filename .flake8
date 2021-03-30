@@ -1,0 +1,21 @@
+# TODO Ideally, F841 should not be ignored. We must remove all un-used variable and stop ignoring this.
+# TODO Disabling E203, E231 until flake8 adds support for assignment expressions
+[flake8]
+ignore = W503, F841, D301, W504, E203, E231, E722, B001, F401, E402
+max-line-length = 120
+exclude =
+    .git,
+    __pycache__,
+    venv,
+    .venv,
+    .ipynb_checkpoints,
+    playground,
+    site-packages,
+    _build,
+    terraform,
+    setup.py,
+    dist,
+    build,
+    docs,
+    var
+select = C,E,F,W,B,B9,D

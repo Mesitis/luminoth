@@ -48,13 +48,23 @@ from __future__ import division
 from __future__ import print_function
 
 from tensorflow.compat.v1 import layers
-from tf_slim.ops.arg_scope import arg_scope
+from tf_slim.ops.arg_scope import arg_scope, add_arg_scope
 from tf_slim import layers as layers_lib
 from tf_slim.layers import regularizers
 from tf_slim.layers import utils
 from tensorflow.python.ops import init_ops
 from tensorflow.python.ops import nn_ops
 from tensorflow.python.ops import variable_scope
+
+
+@add_arg_scope
+def conv2d(*args, **kwargs):
+    """
+    Wrapper method to handle ValueError raised by tf_slim for not using
+    @add_arg_scope
+    """
+    print(f"{args}, {kwargs}")
+    return layers.conv2d(*args, **kwargs)
 
 
 def vgg_arg_scope(weight_decay=0.0005):
@@ -67,16 +77,16 @@ def vgg_arg_scope(weight_decay=0.0005):
       An arg_scope.
     """
     with arg_scope(
-        [layers.conv2d, layers_lib.fully_connected],
+        [conv2d, layers_lib.fully_connected],
         activation_fn=nn_ops.relu,
         weights_regularizer=regularizers.l2_regularizer(weight_decay),
-        biases_initializer=init_ops.zeros_initializer()
+        biases_initializer=init_ops.zeros_initializer(),
     ):
-        with arg_scope([layers.conv2d], padding='SAME') as arg_sc:
+        with arg_scope([conv2d], padding="SAME") as arg_sc:
             return arg_sc
 
 
-def truncated_vgg_16(inputs, is_training=True, scope='vgg_16'):
+def truncated_vgg_16(inputs, is_training=True, scope="vgg_16"):
     """Oxford Net VGG 16-Layers version D Example.
 
     For use in SSD object detection network, which has this particular
@@ -89,34 +99,35 @@ def truncated_vgg_16(inputs, is_training=True, scope='vgg_16'):
     Returns:
       the last op containing the conv5 tensor and end_points dict.
     """
-    with variable_scope.variable_scope(scope, 'vgg_16', [inputs]) as sc:
-        end_points_collection = sc.original_name_scope + '_end_points'
+    with variable_scope.variable_scope(scope, "vgg_16", [inputs]) as sc:
+        end_points_collection = sc.original_name_scope + "_end_points"
         # Collect outputs for conv2d, fully_connected and max_pool2d.
         with arg_scope(
-            [layers.conv2d, layers_lib.fully_connected, layers_lib.max_pool2d],
-            outputs_collections=end_points_collection
+            [conv2d, layers_lib.fully_connected, layers_lib.max_pool2d],
+            outputs_collections=end_points_collection,
         ):
             net = layers_lib.repeat(
-                inputs, 2, layers.conv2d, 64, [3, 3], scope='conv1')
-            net = layers_lib.max_pool2d(net, [2, 2], scope='pool1')
-            net = layers_lib.repeat(
-                net, 2, layers.conv2d, 128, [3, 3], scope='conv2'
+                inputs, 2, layers_lib.conv2d, 64, [3, 3], scope="conv1"
             )
-            net = layers_lib.max_pool2d(net, [2, 2], scope='pool2')
+            net = layers_lib.max_pool2d(net, [2, 2], scope="pool1")
             net = layers_lib.repeat(
-                net, 3, layers.conv2d, 256, [3, 3], scope='conv3'
+                net, 2, layers_lib.conv2d, 128, [3, 3], scope="conv2"
             )
-            net = layers_lib.max_pool2d(net, [2, 2], scope='pool3')
+            net = layers_lib.max_pool2d(net, [2, 2], scope="pool2")
             net = layers_lib.repeat(
-                net, 3, layers.conv2d, 512, [3, 3], scope='conv4'
+                net, 3, layers_lib.conv2d, 256, [3, 3], scope="conv3"
             )
-            net = layers_lib.max_pool2d(net, [2, 2], scope='pool4')
+            net = layers_lib.max_pool2d(net, [2, 2], scope="pool3")
             net = layers_lib.repeat(
-                net, 3, layers.conv2d, 512, [3, 3], scope='conv5'
+                net, 3, layers_lib.conv2d, 512, [3, 3], scope="conv4"
+            )
+            net = layers_lib.max_pool2d(net, [2, 2], scope="pool4")
+            net = layers_lib.repeat(
+                net, 3, layers_lib.conv2d, 512, [3, 3], scope="conv5"
             )
             # Convert end_points_collection into a end_point dict.
             end_points = utils.convert_collection_to_dict(
-                end_points_collection
+                collection=end_points_collection
             )
             return net, end_points
 

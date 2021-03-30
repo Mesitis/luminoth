@@ -62,6 +62,7 @@ class RPNTest(tf.test.TestCase):
         self.ratios = np.array([0.5, 1, 2])
         self.stride = 16
         tf.reset_default_graph()
+        tf.disable_eager_execution()
 
     def testBasic(self):
         """Tests shapes are consistent with anchor generation.
