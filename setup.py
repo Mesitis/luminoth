@@ -30,12 +30,7 @@ CLASSIFIERS = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Libraries",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 2",
-    "Programming Language :: Python :: 2.7",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.4",
-    "Programming Language :: Python :: 3.5",
-    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: >=3.8",
 ]
 
 INSTALL_REQUIRES = [
@@ -48,13 +43,13 @@ INSTALL_REQUIRES = [
     "click",
     # Sonnet 1.25+ requires tensorflow_probability which we do not need here.
     # 'dm-sonnet>=1.12,<=1.23',
-    # Can remove easydict <=1.8 pin after
-    # https://github.com/makinacorpus/easydict/pull/14 is merged.
-    "easydict>=1.7,<=1.8",
+    "easydict",
     "six>=1.11",
     "tensorflow",
     "tf-slim",
-    "numpy==1.19.2",
+    # downgrade numpy (e.g 1.19.2) for python <3.8
+    "numpy==1.23.5",
+    "protobuf==3.20.*",
 ]
 TEST_REQUIRES = []
 
